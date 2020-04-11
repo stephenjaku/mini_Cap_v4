@@ -1,8 +1,8 @@
 {
-  "name": "mini_cap_vn",
+  "name": "mini_cap_v4",
   "version": "1.0.0",
-  "description": "",
-  "main": "minicap.js",
+  "description": "patient_Name_API",
+  "main": "index.js",
   "engines": {
     "node": "10.15.0"
   },
@@ -20,6 +20,6 @@
     "pg": "^7.18.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.3"
   }
 }

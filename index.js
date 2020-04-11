@@ -9,8 +9,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
-const getBooks = (request, response) => {
-  pool.query('SELECT * FROM books', (error, results) => {
+const getPatients = (request, response) => {
+  pool.query('SELECT * FROM patient_info.patient_name', (error, results) => {
     if (error) {
       throw error
     }
@@ -18,23 +18,23 @@ const getBooks = (request, response) => {
   })
 }
 
-const addBook = (request, response) => {
-  const { author, title } = request.body
+const addPatient = (request, response) => {
+  const { first_name, last_name } = request.body
 
-  pool.query('INSERT INTO books (author, title) VALUES ($1, $2)', [author, title], error => {
+  pool.query('INSERT INTO patient_info.patient_name (first_name, last_name) VALUES ($1, $2)', [first_name, last_name], error => {
     if (error) {
       throw error
     }
-    response.status(201).json({ status: 'success', message: 'Book added.' })
+    response.status(201).json({ status: 'success', message: 'Patient added.' })
   })
 }
 
 app
-  .route('/books')
+  .route('/patients')
   // GET endpoint
-  .get(getBooks)
+  .get(getPatients)
   // POST endpoint
-  .post(addBook)
+  .post(addPatient)
 
 // Start server
 app.listen(process.env.PORT || 3002, () => {
